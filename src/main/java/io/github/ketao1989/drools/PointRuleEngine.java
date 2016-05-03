@@ -75,7 +75,7 @@
 //    // 网络流中获取
 //    try {
 //      byte[] contents = Resources.toByteArray(Resources.getResource(name));
-//      //byte[] contents = Files.toByteArray(new File("/Users/ketao/didi/file/" + name));
+//      //byte[] contents = Files.toByteArray(new File("/Users/ketao/file/" + name));
 //      System.out.println(contents.length);
 //      System.out.println(new String(contents));
 //      return Pair.of(name,contents);

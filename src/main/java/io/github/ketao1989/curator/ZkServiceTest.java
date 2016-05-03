@@ -20,14 +20,14 @@ public class ZkServiceTest {
 
         final CuratorFramework client = CuratorFrameworkFactory.newClient("10.10.33.134:2181", 10000, 10000, new RetryForever(1000));
         client.start();
-        //client.create().creatingParentsIfNeeded().forPath("/zk/didi/test", "testS".getBytes());
+        //client.create().creatingParentsIfNeeded().forPath("/zk/test", "testS".getBytes());
 
        // System.out.println(new String(client.getData().forPath("/brokers/topics/blanka-trade-dev/partitions")));
 
-        //client.setData().forPath("/zk/didi/test","test3".getBytes());
-        //System.out.println(new String(client.getData().forPath("/zk/didi/test")));
+        //client.setData().forPath("/zk/test","test3".getBytes());
+        //System.out.println(new String(client.getData().forPath("/zk/test")));
 
-        //client.create().creatingParentsIfNeeded().forPath("/zk/didi/mtest","testM".getBytes());
+        //client.create().creatingParentsIfNeeded().forPath("/zk/mtest","testM".getBytes());
 
         client.delete().deletingChildrenIfNeeded().forPath("/zk/codis");
 //        List<String> strings = client.getChildren().forPath("/brokers/topics/blanka-trade-dev/partitions");

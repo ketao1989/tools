@@ -4,9 +4,7 @@ import io.github.ketao1989.thrift.Hello;
 import io.github.ketao1989.thrift.HelloResult;
 import org.apache.thrift.TException;
 
-/**
- * Created by didi on 2015/7/16.
- */
+/***/
 public class HelloService implements Hello.Iface {
 
     public HelloResult sayHello(int word, int sword) throws TException {
