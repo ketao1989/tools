@@ -1,0 +1,14 @@
+package io.github.ketao1989.drools
+
+import io.github.ketao1989.drools.PointEntity
+
+rule buyMoneyPoint
+    salience 100
+    lock-on-active true
+    date-effective "2016-01-01 00:00:00"
+    date-expires "2016-05-01 00:00:00"
+    when
+        $pointEntity:PointEntity(buyMoney > 1000)
+    then
+        $pointEntity.setPoint($pointEntity.getPoint() + $pointEntity.getBuyMoney()/100);
+end

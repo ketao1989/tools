@@ -1,0 +1,8 @@
+name: testname
+maps:
+-  school: qhu
+   name: zhangsan
+   age: 13
+-  school: bju
+   name: lisi
+   age: 14

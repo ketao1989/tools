@@ -1,0 +1,15 @@
+#分片信息
+sharding:
+    - host:10.10.10.101
+      port:6666
+      timeout:1000
+      weight:1
+
+    - host:10.10.10.10
+      port:6380
+      timeout:7777
+      weight:1
+
+
+#最大连接数(-1不限制)
+MaxTotal: 500
