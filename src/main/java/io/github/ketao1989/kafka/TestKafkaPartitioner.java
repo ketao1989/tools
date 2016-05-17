@@ -20,7 +20,7 @@ public class TestKafkaPartitioner implements Partitioner {
 
         System.out.println(numPartitions);
 
-        return keyInt % numPartitions;
+        return Math.abs(keyInt % numPartitions);
 
     }
 }

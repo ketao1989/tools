@@ -18,7 +18,7 @@ import java.util.Properties;
  */
 public class TestKafkaProducer {
 
-    private static final String TOPIC = "Blanka-topic-qa-fwl";
+    private static final String TOPIC = "Blanka-topic-dev";
 
     public static void main(String[] args) {
 
@@ -48,12 +48,12 @@ public class TestKafkaProducer {
 
                 Map<String, String> map = new HashMap<String, String>();
 
-                map.put("transactionId", "BLANKA_r14519644039211451964385876");
+                map.put("transactionId", "BLANKA_r145196440392114519643858761");
                 map.put("accountId", "1000010000002000046");
                 map.put("fundTradeType", "1");
                 map.put("fundTradeMode", "1");
                 map.put("transactionDesc", "测试" + System.currentTimeMillis());
-                map.put("amount", "44");
+                map.put("amount", "434");
                 map.put("productId", "1");
 
                 String msg = JsonUtils.encode(map);
@@ -65,7 +65,7 @@ public class TestKafkaProducer {
                 System.out.println(message);
             }
 
-            Thread.sleep(RandomUtils.nextInt(1, 10));
+            Thread.sleep(10000);
 
         } catch (Exception e) {
             e.printStackTrace();

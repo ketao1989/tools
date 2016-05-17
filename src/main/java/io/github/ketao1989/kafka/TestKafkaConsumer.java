@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
  */
 public class TestKafkaConsumer implements Runnable {
 
-    private static final String TOPIC = "Blanka-trade-dev";
+    private static final String TOPIC = "Blanka-topic-unbind";
 
     private static final String CONSUMER_GROUP = "test-kafka-consumer";
 
@@ -81,7 +81,7 @@ public class TestKafkaConsumer implements Runnable {
         // TestKafkaConsumer example = new TestKafkaConsumer("10.10.38.3:2181", CONSUMER_GROUP, TOPIC);
 
         ExecutorService executor = Executors.newFixedThreadPool(3);
-        executor.submit(new TestKafkaConsumer("10.10.38.3:2181", CONSUMER_GROUP, TOPIC));
+        executor.submit(new TestKafkaConsumer("10.10.10.99:2181", CONSUMER_GROUP, TOPIC));
 
         // example.run(3);
 
