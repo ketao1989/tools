@@ -13,17 +13,20 @@ public class DroolsTest {
     // System.out.println(binaryNum);
     // System.out.println(binaryNum.matches("1(00)*"));
 
-    RuleEngine<PointEntity> pointRuleEngine = new PointRuleEngineFive();
+    RuleEngine<PointParams,PointResult> pointRuleEngine = new PointRuleEngineFive();
     pointRuleEngine.loadEngine();
 
-    PointEntity entity = new PointEntity();
+    PointParams entity = new PointParams();
     entity.setBirthdayMouth(true);
-    entity.setPoint(100);
     entity.setBuyMoney(1200);
 
-    pointRuleEngine.executeEngine(entity);
+    PointResult result= new PointResult();
+    result.setChecked(false);
+    result.setPoint(10);
 
-    System.out.println(entity.getPoint());
+    pointRuleEngine.executeEngine(entity,result);
+
+    System.out.println(result.getPoint());
 
     //Thread.sleep(10000);
     //pointRuleEngine.reloadEngine();

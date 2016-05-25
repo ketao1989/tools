@@ -6,7 +6,7 @@ package io.github.ketao1989.drools;
 /**
  * @author tao.ke Date: 16/4/15 Time: 下午3:11
  */
-public interface RuleEngine<T> {
+public interface RuleEngine<P,R> {
 
   /**
    * 初始化加载rule规则配置
@@ -17,7 +17,7 @@ public interface RuleEngine<T> {
    * 执行rule规则引擎
    * @param entity
    */
-  void executeEngine(T entity);
+  void executeEngine(P entity,R result);
 
   /**
    * 重新加载,当有新的rule配置时,调用

@@ -1,0 +1,30 @@
+package io.github.ketao1989.drools
+
+import io.github.ketao1989.drools.PointParams
+import io.github.ketao1989.drools.PointResult
+
+rule birthdayPoint
+    salience 101
+    lock-on-active true
+    when
+        $pointResult:PointResult(checked == false)
+        $pointParams:PointParams(birthdayMouth == true)
+    then
+        modify($pointResult){
+            setPoint($pointResult.getPoint() * 2),
+            setChecked(true)
+        };
+end
+
+rule buyMoenyPoint
+    salience 102
+    lock-on-active true
+    when
+        $pointResult:PointResult(checked == false)
+        $pointParams:PointParams(buyMoney > 1000)
+    then
+        modify($pointResult){
+            setPoint($pointResult.getPoint() + $pointParams.getBuyMoney()/100),
+            setChecked(true)
+        }
+end

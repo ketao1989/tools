@@ -11,13 +11,14 @@ import org.drools.builder.KnowledgeBuilderFactory;
 import org.drools.builder.ResourceType;
 import org.drools.io.ResourceFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
+import org.drools.runtime.rule.FactHandle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * @author tao.ke Date: 16/4/22 Time: 上午11:32
  */
-public class PointRuleEngineFive implements RuleEngine<PointEntity> {
+public class PointRuleEngineFive implements RuleEngine<PointParams,PointResult> {
 
   private static final Logger logger = LoggerFactory.getLogger(PointRuleEngineFive.class);
 
@@ -30,7 +31,7 @@ public class PointRuleEngineFive implements RuleEngine<PointEntity> {
 
     KnowledgeBuilder builder = KnowledgeBuilderFactory.newKnowledgeBuilder();
 
-    builder.add(ResourceFactory.newClassPathResource("billPoint.drl"),ResourceType.DRL);
+    builder.add(ResourceFactory.newClassPathResource("speraPoint.drl"),ResourceType.DRL);
 
     if (builder.hasErrors()) {
       logger.error("init rule drools error.{}", builder.getErrors());
@@ -41,11 +42,16 @@ public class PointRuleEngineFive implements RuleEngine<PointEntity> {
     knowledgeBase.addKnowledgePackages(builder.getKnowledgePackages());
   }
 
-  public void executeEngine(PointEntity entity) {
+  public void executeEngine(PointParams pointParams,PointResult pointResult) {
 
     StatefulKnowledgeSession knowledgeSession = knowledgeBase.newStatefulKnowledgeSession();
-    knowledgeSession.insert(entity);
-    knowledgeSession.dispose();
+    FactHandle paramsHandler = knowledgeSession.insert(pointParams);
+    FactHandle resultHandler = knowledgeSession.insert(pointResult);
+
+    //knowledgeSession.retract(paramsHandler);
+    //knowledgeSession.retract(resultHandler);
+
+    knowledgeSession.fireAllRules();
 
   }
 
