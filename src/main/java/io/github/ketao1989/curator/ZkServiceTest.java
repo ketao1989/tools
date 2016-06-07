@@ -18,7 +18,7 @@ public class ZkServiceTest {
 
     public static void main(String[] args) throws Exception {
 
-        final CuratorFramework client = CuratorFrameworkFactory.newClient("10.10.33.134:2181", 10000, 10000, new RetryForever(1000));
+        final CuratorFramework client = CuratorFrameworkFactory.newClient("10.94.98.241:2181", 10000, 10000, new RetryForever(1000));
         client.start();
         //client.create().creatingParentsIfNeeded().forPath("/zk/test", "testS".getBytes());
 
