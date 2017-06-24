@@ -42,7 +42,7 @@ public class FirstTest {
 
         List<TypeB> bs = Lists.newArrayList(b1,b2,b3);
 
-        System.out.println(bs.stream().collect(listToMap((entry) -> entry.getCode())));;
+        System.out.println(bs.stream().collect(listToMap((entry) -> entry.getCode(),(entry) -> entry.getAddress())));;
 
     }
 
@@ -57,14 +57,14 @@ public class FirstTest {
         }
     }
 
-    public static <T, K> Collector<T, ?, Map<K, T>> listToMap(Function<? super T, ? extends K> classifier) {
+    public static <T, K,V> Collector<T, ?, Map<K, V>> listToMap(Function<? super T, ? extends K> keyFun,Function<? super T, ? extends V> valueFun) {
 
-        Supplier<Map<K, T>> supplier = HashMap::new;
-        BiConsumer<Map<K, T>, T> accumulator = (m, t) -> {
-            m.put(classifier.apply(t), t);
+        Supplier<Map<K, V>> supplier = HashMap::new;
+        BiConsumer<Map<K, V>, T> accumulator = (m, t) -> {
+            m.put(keyFun.apply(t), valueFun.apply(t));
         };
 
-        BinaryOperator<Map<K, T>> combiner = (left, right) -> { left.putAll(right); return left; };
+        BinaryOperator<Map<K, V>> combiner = (left, right) -> { left.putAll(right); return left; };
 
         return Collector.of(supplier,accumulator,combiner,Collector.Characteristics.UNORDERED);
 
