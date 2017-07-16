@@ -13,6 +13,7 @@
     </Appenders>
     <Loggers>
         <asyncLogger name="io.github.ketao1989" level="debug"/>
+        <asyncLogger name="drools.execute.log" level="debug"/>
         <asyncRoot level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="RandomAccessFile"/>

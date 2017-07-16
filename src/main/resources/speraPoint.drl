@@ -10,6 +10,7 @@ rule birthdayPoint
         $pointResult:PointResult(checked == false)
         $pointParams:PointParams(birthdayMouth == true)
     then
+        $pointParams.logger.info("test--------");
         modify($pointResult){
             setPoint($pointResult.getPoint() * 2),
             setChecked(true)
@@ -23,6 +24,7 @@ rule buyMoenyPoint
         $pointResult:PointResult(checked == false)
         $pointParams:PointParams(buyMoney > 1000)
     then
+        $pointParams.logger.info("test--------");
         modify($pointResult){
             setPoint($pointResult.getPoint() + $pointParams.getBuyMoney()/100),
             setChecked(true)

@@ -3,10 +3,15 @@
 */
 package io.github.ketao1989.drools;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author tao.ke Date: 16/4/15 Time: 下午4:23
  */
 public class DroolsTest {
+
+  private static final Logger logger = LoggerFactory.getLogger(DroolsTest.class);
 
   public static void main(String[] args) throws InterruptedException {
     // String binaryNum = Integer.toBinaryString(16);
@@ -30,6 +35,8 @@ public class DroolsTest {
 
     //Thread.sleep(10000);
     //pointRuleEngine.reloadEngine();
+
+    logger.info("--------============");
 
   }
 }

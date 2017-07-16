@@ -3,6 +3,8 @@
 */
 package io.github.ketao1989.drools;
 
+import org.slf4j.Logger;
+
 /**
  * @author tao.ke Date: 16/5/25 Time: 上午10:45
  */
@@ -11,6 +13,7 @@ public class PointParams extends BaseRuleEntity{
     private int buyMoney;//fen
 
     private boolean birthdayMouth;
+
 
     public int getBuyMoney() {
         return buyMoney;
