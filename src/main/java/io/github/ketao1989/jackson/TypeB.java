@@ -1,12 +1,16 @@
 package io.github.ketao1989.jackson;
 
+import io.github.ketao1989.diff.PropertyCnName;
+
 /**
  * Created by ketao on 15-2-8.
  */
 public class TypeB {
 
+    @PropertyCnName(cnName = "地址")
     String address;
 
+    @PropertyCnName(cnName = "编码")
     int code;
 
     public TypeB() {

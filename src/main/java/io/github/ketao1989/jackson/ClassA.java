@@ -7,18 +7,24 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.util.List;
 
+import io.github.ketao1989.diff.PropertyCnName;
+
 /**
  * Created by ketao on 15-2-7.
  */
 public class ClassA {
 
+    @PropertyCnName(cnName = "名字")
     String name;
 
+    @PropertyCnName(cnName = "年龄")
     int age;
 
-    List<String> hobby;
+    @PropertyCnName(cnName = "爱好")
+    private List<String> hobby;
 
-    TypeB b;
+    @PropertyCnName(cnName = "类型B")
+    private TypeB b;
 
     public String getName() {
         return name;
