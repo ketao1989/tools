@@ -9,9 +9,15 @@ package io.github.ketao1989.spring;
  */
 public class SpringBeanService {
 
+    private SpringBeanService springBeanService;
+
+    public void setSpringBeanService(SpringBeanService springBeanService) {
+        this.springBeanService = springBeanService;
+    }
 
     public void printBeanInfo() {
         System.out.println("===bean info ----=====");
+        springBeanService.printAopInfo();
     }
 
     @AnnotationPoint

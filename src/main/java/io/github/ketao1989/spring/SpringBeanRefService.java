@@ -17,6 +17,7 @@ public class SpringBeanRefService {
 
     public void pringBeanInfos() {
         springBeanService.printBeanInfo();
+        //springBeanService.printAopInfo();
 
         System.out.println("===ref beans info====");
 
