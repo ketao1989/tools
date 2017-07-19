@@ -42,8 +42,8 @@ public class SpringBeanTest {
         SpringBeanService springBeanService = applicationContext.getBean("springBeanService", SpringBeanService.class);
         springBeanService.printAopInfo();
 
-//        SpringBeanRefService refService = applicationContext.getBean("springBeanRefService",SpringBeanRefService.class);
-//        refService.pringBeanInfos();
+        SpringBeanRefService refService = applicationContext.getBean("springBeanRefService",SpringBeanRefService.class);
+        refService.pringBeanInfos();
     }
 
 }

@@ -12,7 +12,6 @@ public class SpringBeanService {
 
     public void printBeanInfo() {
         System.out.println("===bean info ----=====");
-        printAopInfo();
     }
 
     @AnnotationPoint
