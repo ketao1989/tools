@@ -9,7 +9,14 @@ package io.github.ketao1989.spring;
  */
 public class SpringBeanService {
 
+
     public void printBeanInfo() {
         System.out.println("===bean info ----=====");
+        printAopInfo();
+    }
+
+    @AnnotationPoint
+    protected void printAopInfo(){
+        System.out.println("======invoking method =============");
     }
 }

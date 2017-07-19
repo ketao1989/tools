@@ -1,20 +1,17 @@
 package io.github.ketao1989.diff;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 import de.danielbechler.diff.ObjectDifferBuilder;
 import de.danielbechler.diff.node.DiffNode;
 import de.danielbechler.diff.node.Visit;
 
 import io.github.ketao1989.jackson.ClassA;
-import io.github.ketao1989.jackson.JsonUtils;
 import io.github.ketao1989.jackson.TypeB;
 
 /**

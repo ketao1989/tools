@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
     <bean id="springBeanService" class="io.github.ketao1989.spring.SpringBeanService"/>
 
     <bean id="springBeanRefService" class="io.github.ketao1989.spring.SpringBeanRefService">
         <constructor-arg ref="springBeanService"/>
     </bean>
 
-    <bean id="consumerFactory" class="com.taocoder.ourea.spring.consumer.ConsumerProxyFactoryBean">
-        <property name="configLocation" value="consumer.properties"/>
-        <property name="clazz" value="com.taocoder.ourea.Ourea.Iface"/>
-        <property name="refId" value="oureaImpl1"/>
-    </bean>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!-- 配置数据库注解aop -->
+    <bean id="aopAdvice" class="io.github.ketao1989.spring.AopAdvice"/>
+    <aop:config>
+        <aop:aspect id="dsa" ref="aopAdvice">
+            <aop:pointcut id="pc" expression="execution(* io.github.ketao1989.spring.SpringBeanService.*(..))"/>
+            <aop:before pointcut-ref="pc" method="before"/>
+            <aop:after pointcut-ref="pc" method="after"/>
+        </aop:aspect>
+    </aop:config>
 
-    <bean id="oureaImpl" class="io.github.ketao1989.spring.OureaImpl"/>
-    <bean class="com.taocoder.ourea.spring.provider.ServiceProviderFactoryBean">
-        <property name="configLocation" value="provider.properties"/>
-        <property name="ref" ref="oureaImpl"/>
-    </bean>
+    <!--<bean id="consumerFactory" class="com.taocoder.ourea.spring.consumer.ConsumerProxyFactoryBean">-->
+        <!--<property name="configLocation" value="consumer.properties"/>-->
+        <!--<property name="clazz" value="com.taocoder.ourea.Ourea.Iface"/>-->
+        <!--<property name="refId" value="oureaImpl1"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="oureaImpl" class="io.github.ketao1989.spring.OureaImpl"/>-->
+    <!--<bean class="com.taocoder.ourea.spring.provider.ServiceProviderFactoryBean">-->
+        <!--<property name="configLocation" value="provider.properties"/>-->
+        <!--<property name="ref" ref="oureaImpl"/>-->
+    <!--</bean>-->
 </beans>

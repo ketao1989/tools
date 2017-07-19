@@ -4,7 +4,11 @@
 package io.github.ketao1989.spring;
 
 import com.taocoder.ourea.Ourea;
+
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 /**
  * @author tao.ke Date: 15-3-20 Time: 上午10:27
@@ -21,23 +25,23 @@ public class SpringBeanTest {
 
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean.xml");
 //client test
-        Ourea.Iface oureaImpl = applicationContext.getBean("oureaImpl1",Ourea.Iface.class);
-
-        while (true){
-            try {
-                System.out.println(oureaImpl.queryEcho("test"));
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            Thread.sleep(900);
-        }
+//        Ourea.Iface oureaImpl = applicationContext.getBean("oureaImpl1",Ourea.Iface.class);
+//
+//        while (true){
+//            try {
+//                System.out.println(oureaImpl.queryEcho("test"));
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//            Thread.sleep(900);
+//        }
 
         // server test
 
 
-//        SpringBeanService springBeanService = applicationContext.getBean("springBeanService", SpringBeanService.class);
-//        springBeanService.printBeanInfo();
-//
+        SpringBeanService springBeanService = applicationContext.getBean("springBeanService", SpringBeanService.class);
+        springBeanService.printAopInfo();
+
 //        SpringBeanRefService refService = applicationContext.getBean("springBeanRefService",SpringBeanRefService.class);
 //        refService.pringBeanInfos();
     }
