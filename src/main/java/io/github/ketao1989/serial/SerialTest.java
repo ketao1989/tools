@@ -11,25 +11,30 @@ public class SerialTest {
 
     public static void main(String[] args) {
 
-        Blog blog = new Blog();
+        Blog blog = new Blog(1111L,"rpc serial");
         blog.setContent("this is a blog content.");
-        blog.setId(11111L);
+        //blog.setId(11111L);
         blog.setCreateTime(new Timestamp(System.currentTimeMillis()));
-        blog.setName("rpc serial");
+
+
+
+
         try {
-            long a = System.currentTimeMillis();
-            for (int i = 0;i<1;i++){
-                JdkSerialiable.serial(blog);
-            }
-            System.out.println("cost time "+ (System.currentTimeMillis() - a));
 
-            long b = System.currentTimeMillis();
-            for (int i = 0;i<1;i++){
-                HessianSerialibale.serial(blog);
-            }
-            System.out.println("cost time "+ (System.currentTimeMillis() - b));
-
-            KryoSerializable.serial(blog);
+            HessianSerialibale.serial(blog);
+//            long a = System.currentTimeMillis();
+//            for (int i = 0;i<1;i++){
+//                JdkSerialiable.serial(blog);
+//            }
+//            System.out.println("cost time "+ (System.currentTimeMillis() - a));
+//
+//            long b = System.currentTimeMillis();
+//            for (int i = 0;i<1;i++){
+//                HessianSerialibale.serial(blog);
+//            }
+//            System.out.println("cost time "+ (System.currentTimeMillis() - b));
+//
+//            KryoSerializable.serial(blog);
 
         } catch (Exception e) {
             e.printStackTrace();

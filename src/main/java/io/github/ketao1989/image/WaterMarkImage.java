@@ -64,7 +64,7 @@ public class WaterMarkImage {
   public static void waterMarkOther(File srcImageFile){
 
     try {
-      BufferedImage srcImg = ImageIO.read(new File("/Users/ketao/Pictures/test_icon.jpeg"));
+      BufferedImage srcImg = ImageIO.read(new File("/Users/ketao/demo/certificate.png"));
 
 
       Thumbnails.of(srcImageFile)

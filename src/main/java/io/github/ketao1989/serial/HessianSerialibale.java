@@ -18,6 +18,7 @@ public class HessianSerialibale {
         Hessian2Output os = new Hessian2Output(baos);
         os.writeObject(blog);
         os.close();
+
         Hessian2Input is = new Hessian2Input(new ByteArrayInputStream(baos.toByteArray()));
         Blog blog1 = (Blog) is.readObject();
         is.close();
