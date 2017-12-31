@@ -15,22 +15,22 @@ public class Blog implements Serializable {
 
     private static final long serialVersionUID = 3669472283266271710L;
 
-    private final long id;
-    private final String name;
+    private String id;
+    private String name;
     private String content;
     private Timestamp createTime;
 
-    public Blog(long id) {
+    public Blog(String id) {
         this.id = id;
         this.name="xxxxx";
     }
 
-    public Blog(long id, String name) {
+    public Blog(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 

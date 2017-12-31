@@ -1,5 +1,12 @@
 package io.github.ketao1989.serial;
 
+import com.alibaba.dubbo.common.serialize.ObjectInput;
+import com.alibaba.dubbo.common.serialize.ObjectOutput;
+import com.alibaba.dubbo.common.serialize.support.hessian.Hessian2Serialization;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -9,10 +16,10 @@ import java.util.Date;
  */
 public class SerialTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        Blog blog = new Blog(1111L,"rpc serial");
-        blog.setContent("this is a blog content.");
+        Blog blog = new Blog("11111","rpc serial");
+        blog.setContent("content.");
         //blog.setId(11111L);
         blog.setCreateTime(new Timestamp(System.currentTimeMillis()));
 
@@ -21,7 +28,7 @@ public class SerialTest {
 
         try {
 
-            HessianSerialibale.serial(blog);
+            //HessianSerialibale.serial(blog);
 //            long a = System.currentTimeMillis();
 //            for (int i = 0;i<1;i++){
 //                JdkSerialiable.serial(blog);
@@ -40,6 +47,21 @@ public class SerialTest {
             e.printStackTrace();
         }
 
+
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream(512);
+        Hessian2Serialization hessian2Serialization = new Hessian2Serialization();
+
+        ObjectOutput output = hessian2Serialization.serialize(null, bos);
+        output.writeObject(blog);
+        output.flushBuffer();
+
+
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(bos.toByteArray());
+        ObjectInput input = hessian2Serialization.deserialize(null, inputStream);
+        BlogOth res  = input.readObject(BlogOth.class);
+
+        System.out.println(res);
 
     }
 }

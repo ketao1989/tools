@@ -11,7 +11,7 @@ import io.github.ketao1989.dubbo.api.IUserBiz;
  */
 public class UserBizImpl implements IUserBiz {
 
-    public String queryName(int id) {
+    public String queryName(long id) {
         return "test_" + id;
     }
 }

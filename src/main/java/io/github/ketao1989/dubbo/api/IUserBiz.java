@@ -14,5 +14,5 @@ public interface IUserBiz {
      * @param id
      * @return
      */
-    public String queryName(int id);
+    public String queryName(long id);
 }

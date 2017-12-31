@@ -66,7 +66,7 @@ public class ThreadPoolServer {
         @Override
         public void run() {
 
-            try (InputStream is = socket.getInputStream(); OutputStream os = socket.getOutputStream()) {
+            try(InputStream is = socket.getInputStream(); OutputStream os = socket.getOutputStream()) {
 
                 // 连接成功，返回连接成功消息给客户端
                 os.write(("SERVER CONN OK!" + new Date().toString() + "\n\r").getBytes(Charset.defaultCharset()));
