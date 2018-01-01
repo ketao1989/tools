@@ -13,22 +13,10 @@ public class BlogOth implements Serializable {
 
   private static final long serialVersionUID = 3669472283266271710L;
 
-  private long id;
+  private String id;
   private String name;
-  private String content;
-  private Timestamp createTime;
 
-  public BlogOth(long id) {
-    this.id = id;
-    this.name="xxxxx";
-  }
-
-  public BlogOth(long id, String name) {
-    this.id = id;
-    this.name = name;
-  }
-
-  public long getId() {
+  public String getId() {
     return id;
   }
 
@@ -37,21 +25,12 @@ public class BlogOth implements Serializable {
     return name;
   }
 
-
-  public String getContent() {
-    return content;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public void setContent(String content) {
-    this.content = content;
-  }
-
-  public Timestamp getCreateTime() {
-    return createTime;
-  }
-
-  public void setCreateTime(Timestamp createTime) {
-    this.createTime = createTime;
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Override

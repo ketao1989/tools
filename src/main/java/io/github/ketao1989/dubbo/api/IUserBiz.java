@@ -15,4 +15,6 @@ public interface IUserBiz {
      * @return
      */
     public String queryName(long id);
+
+    public String addUser(UserRequest request);
 }

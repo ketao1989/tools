@@ -11,6 +11,9 @@ import com.alibaba.dubbo.rpc.service.GenericService;
 import io.github.ketao1989.dubbo.api.IUserBiz;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author: ketao Date: 15-7-30 Time: 下午8:07
  * @version: \$Id\$
@@ -19,8 +22,8 @@ public class UserBizConsumer {
 
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("dubbo/dubbo-consumer.xml");
-        applicationContext.start();
+        //ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("dubbo/dubbo-consumer.xml");
+        //applicationContext.start();
 
 
         ApplicationConfig applicationConfig = new ApplicationConfig("dubbo-provider");
@@ -40,8 +43,14 @@ public class UserBizConsumer {
         ref.setGeneric(true);
 
         GenericService service = ref.get();
-        Object o = service.$invoke("queryName",new String[]{"long"},new Object[]{"12"});
-        System.out.println(o);
+//        Object o = service.$invoke("queryName",new String[]{"long"},new Object[]{12});
+//        System.out.println(o);
+
+        Map<String,Object> value = new HashMap<>();
+        value.put("id","1234567");
+        value.put("name","kk123");
+        Object o2 = service.$invoke("addUser",new String[]{"io.github.ketao1989.dubbo.api.UserRequest"},new Object[]{value});
+        System.out.println(o2);
 
 
         //IUserBiz userBiz =(IUserBiz)applicationContext.getBean("userBiz");

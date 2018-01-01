@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import io.github.ketao1989.dubbo.api.UserRequest;
+
 /**
  * @author: zinian Date: 2016/12/6 Time: 下午9:48
  * @version: \$Id$
@@ -18,10 +20,9 @@ public class SerialTest {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        Blog blog = new Blog("11111","rpc serial");
-        blog.setContent("content.");
-        //blog.setId(11111L);
-        blog.setCreateTime(new Timestamp(System.currentTimeMillis()));
+        BlogOth blog = new BlogOth();
+        blog.setId("11111");
+        blog.setName("rpc serial");
 
 
 
@@ -59,7 +60,7 @@ public class SerialTest {
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream(bos.toByteArray());
         ObjectInput input = hessian2Serialization.deserialize(null, inputStream);
-        BlogOth res  = input.readObject(BlogOth.class);
+        UserRequest res  = input.readObject(UserRequest.class);
 
         System.out.println(res);
 
